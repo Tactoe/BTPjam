@@ -8,6 +8,8 @@ public class MainMenuUI : MonoBehaviour
     public float fadeSpeed;
     [SerializeField]
     Animator cameraAnim;
+    [SerializeField]
+    Animator objectiveAnim;
     Animator canvasAnim;
     CanvasGroup cg;
     // Start is called before the first frame update
@@ -28,6 +30,7 @@ public class MainMenuUI : MonoBehaviour
         cg.interactable = false;
         cg.blocksRaycasts = false;
         canvasAnim.SetTrigger("startGame");
+        objectiveAnim.SetTrigger("startGame");
         cameraAnim.SetTrigger("startGame");
     }
 }

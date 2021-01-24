@@ -9,6 +9,10 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     GameObject examineItemCanvas;
     [SerializeField]
+    GameObject pauseMenu;
+    [SerializeField]
+    GameObject finalScoreUI;
+    [SerializeField]
     ShowcaseItem showcase;
     [SerializeField]
     GameObject showcaseCamera;
@@ -59,14 +63,26 @@ public class UIManager : MonoBehaviour
 
     public void DitchObject()
     {
+        ValueHandler.Instance.UpdateValues(lastObjectChecked.GetComponent<ItemData>().values);
         if (lastObjectChecked != null)
             Destroy(lastObjectChecked);
         TurnOffItemCanvas();
     }
 
+    public void ShowFinalScore()
+    {
+        int score = 5 - ValueHandler.Instance.EvaluateIsland();
+        finalScoreUI.SetActive(true);
+        finalScoreUI.GetComponent<FinalScore>().SetFinalScore(score);
+    }
+
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            pauseMenu.SetActive(!pauseMenu.activeInHierarchy);
+            Time.timeScale = pauseMenu.activeInHierarchy ? 0 : 1;
+        }
     }
 }

@@ -6,7 +6,7 @@ public class ItemData : MonoBehaviour
 {
     public string itemName;
     public string description;
-    public int[] values;
+    public float[] values;
     // Start is called before the first frame update
     void Start()
     {
