@@ -5,7 +5,8 @@ using UnityEngine;
 public class RaycastItem : MonoBehaviour
 {
     //public LayerMask ValidLayers;
-
+    [SerializeField]
+    UIManager uIManager;
     Camera cam;
     bool trackingPosition = true;
     private RaycastHit hitInfo;
@@ -20,13 +21,13 @@ public class RaycastItem : MonoBehaviour
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         // Debug.DrawRay(ray.origin, ray.direction);
 
-        if (!UIManager._instance.inMenu)
+        if (!uIManager.inMenu)
         {
             if (Physics.Raycast(ray, out hitInfo))
             {
                 if (Input.GetMouseButtonDown(0) && hitInfo.collider.tag == "Erasable")
                 {
-                    UIManager._instance.ActivateItemCanvas(hitInfo.collider.gameObject, hitInfo.collider.gameObject.GetComponent<ItemData>());
+                    uIManager.ActivateItemCanvas(hitInfo.collider.gameObject, hitInfo.collider.gameObject.GetComponent<ItemData>());
                     print(hitInfo.collider.gameObject.name);
                     trackingPosition = false;
                 }

@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    public static UIManager _instance;
-
     [SerializeField]
     GameObject examineItemCanvas;
     [SerializeField]
@@ -18,24 +16,6 @@ public class UIManager : MonoBehaviour
     GameObject showcaseCamera;
     GameObject lastObjectChecked;
     public bool inMenu = false;
-
-    void Awake()
-    {
-
-        if (_instance == null)
-        {
-
-            _instance = this;
-            DontDestroyOnLoad(this.gameObject);
-
-            //Rest of your Awake code
-
-        }
-        else
-        {
-            Destroy(this);
-        }
-    }
 
     //Rest of your class code
 
@@ -51,6 +31,7 @@ public class UIManager : MonoBehaviour
         showcaseCamera.SetActive(true);
         examineItemCanvas.SetActive(true);
         lastObjectChecked = toShowcase;
+        ValueHandler.Instance.PreviewValue(data.values);
         showcase.SetNewShowcase(toShowcase, data);
     }
 
@@ -59,6 +40,7 @@ public class UIManager : MonoBehaviour
         inMenu = false;
         showcaseCamera.SetActive(false);
         examineItemCanvas.SetActive(false);
+        ValueHandler.Instance.TogglePreview(false);
     }
 
     public void DitchObject()

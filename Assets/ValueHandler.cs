@@ -9,6 +9,12 @@ public class ValueHandler : MonoBehaviour
     public float[] values;
     public float[] idealValues;
     [SerializeField]
+    Image[] positivePreview;
+    [SerializeField]
+    Image[] negativePreview;
+    [SerializeField]
+    Image[] negativePreviewCover;
+    [SerializeField]
     Image[] jauges;
 
     void Awake()
@@ -33,6 +39,8 @@ public class ValueHandler : MonoBehaviour
     void Start()
     {
         SetValues();
+        TogglePreview(false);
+
     }
 
     void Update()
@@ -47,6 +55,7 @@ public class ValueHandler : MonoBehaviour
             values[i] = Mathf.Clamp(values[i] + newValues[i], 0, 100);
         }
         SetValues();
+        TogglePreview(false);
     }
 
     void SetValues()
@@ -54,6 +63,36 @@ public class ValueHandler : MonoBehaviour
         for (int i = 0; i < values.Length; i++)
         {
             jauges[i].fillAmount = values[i] / 100;
+        }
+    }
+
+    public void PreviewValue(float[] newValues)
+    {
+        //TogglePreview(true);
+        for (int i = 0; i < newValues.Length; i++)
+        {
+            if (newValues[i] > 0)
+            {
+                positivePreview[i].gameObject.SetActive(true);
+                positivePreview[i].fillAmount = (values[i] + newValues[i]) / 100;
+            }
+            else if (newValues[i] < 0)
+            {
+                negativePreview[i].gameObject.SetActive(true);
+                negativePreview[i].fillAmount = (values[i]) / 100;
+                negativePreviewCover[i].gameObject.SetActive(true);
+                negativePreviewCover[i].fillAmount = (values[i] + newValues[i]) / 100;
+            }
+        }
+    }
+
+    public void TogglePreview(bool status)
+    {
+        for (int i = 0; i < positivePreview.Length; i++)
+        {
+            positivePreview[i].gameObject.SetActive(status);
+            negativePreview[i].gameObject.SetActive(status);
+            negativePreviewCover[i].gameObject.SetActive(status);
         }
     }
 
