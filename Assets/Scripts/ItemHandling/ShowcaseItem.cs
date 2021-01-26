@@ -5,19 +5,19 @@ using TMPro;
 
 public class ShowcaseItem : MonoBehaviour
 {
-    public float rotationSpeed;
     public GameObject[] prefabs;
     public Transform spawnLocation;
     [SerializeField]
     TextMeshProUGUI nameText;
     [SerializeField]
     TextMeshProUGUI descriptionText;
-
+    Camera uiCam;
 
     GameObject currentShowcase;
     // Start is called before the first frame update
     void Start()
     {
+        uiCam = GetComponentInChildren<Camera>();
     }
 
     // Update is called once per frame
@@ -28,11 +28,18 @@ public class ShowcaseItem : MonoBehaviour
         if (currentShowcase != null)
             Destroy(currentShowcase);
         nameText.text = data.itemName;
+        //uiCam.orthographicSize = data.getSizeMod();
+        setSize(newShowcase.transform.localScale);
         descriptionText.text = data.description;
         currentShowcase = Instantiate(newShowcase, spawnLocation);
-        currentShowcase.transform.rotation = Quaternion.Euler(Vector3.zero);
         currentShowcase.layer = 5;
         currentShowcase.AddComponent<RotateItem>();
         currentShowcase.transform.position = spawnLocation.transform.position;
+        currentShowcase.transform.rotation = Quaternion.Euler(Vector3.left * 10);
+    }
+
+    void setSize(Vector3 scale)
+    {
+        uiCam.orthographicSize = Mathf.Max(scale.x, scale.y, scale.z);
     }
 }

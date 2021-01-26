@@ -16,13 +16,18 @@ public class UIManager : MonoBehaviour
     GameObject showcaseCamera;
     GameObject lastObjectChecked;
     public bool inMenu = false;
+    public Dictionary<string, bool> activeMenus;
 
-    //Rest of your class code
-
-    // Start is called before the first frame update
     void Start()
     {
-        
+        //activeMenus = new Dictionary<string, bool>();
+        //foreach (GameObject child in GetComponentsInChildren<GameObject>())
+        //{
+        //    if (child.transform.parent != null)
+        //    {
+        //        activeMenus.Add(child.name, child.activeInHierarchy);
+        //    }
+        //}
     }
 
     public void ActivateItemCanvas(GameObject toShowcase, ItemData data)
@@ -31,6 +36,21 @@ public class UIManager : MonoBehaviour
         showcaseCamera.SetActive(true);
         examineItemCanvas.SetActive(true);
         lastObjectChecked = toShowcase;
+        if (data.rambling != null && data.rambling.Length > 0)
+        {
+            RamblingText rt =  examineItemCanvas.GetComponentInChildren<RamblingText>(true);
+            rt.currentRambling = data.rambling;
+            rt.gameObject.SetActive(true);
+        }
+        TeleportBehindYou tp = toShowcase.GetComponent<TeleportBehindYou>();
+        if (tp != null)
+        { 
+            if (tp.canTeleport)
+            {
+                data.description = "You blinked, didn't you.";
+            }
+            tp.canTeleport = true;
+        }
         ValueHandler.Instance.PreviewValue(data.values);
         showcase.SetNewShowcase(toShowcase, data);
     }
@@ -41,6 +61,7 @@ public class UIManager : MonoBehaviour
         showcaseCamera.SetActive(false);
         examineItemCanvas.SetActive(false);
         ValueHandler.Instance.TogglePreview(false);
+        FindObjectOfType<TeleportBehindYou>().Teleport();
     }
 
     public void DitchObject()
@@ -53,6 +74,7 @@ public class UIManager : MonoBehaviour
 
     public void ShowFinalScore()
     {
+        inMenu = true;
         int score = 5 - ValueHandler.Instance.EvaluateIsland();
         finalScoreUI.SetActive(true);
         finalScoreUI.GetComponent<FinalScore>().SetFinalScore(score);

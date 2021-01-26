@@ -16,6 +16,8 @@ public class ValueHandler : MonoBehaviour
     Image[] negativePreviewCover;
     [SerializeField]
     Image[] jauges;
+    [SerializeField]
+    Image[] goalIndicators;
 
     void Awake()
     {
@@ -38,6 +40,10 @@ public class ValueHandler : MonoBehaviour
 
     void Start()
     {
+        for (int i = 0; i < goalIndicators.Length; i++)
+        {
+            goalIndicators[i].rectTransform.rotation = Quaternion.Euler(0, 0, -90 - (idealValues[i] / 100) * 360);
+        }
         SetValues();
         TogglePreview(false);
 
