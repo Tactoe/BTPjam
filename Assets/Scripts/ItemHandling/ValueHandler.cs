@@ -5,19 +5,16 @@ using UnityEngine.UI;
 
 public class ValueHandler : MonoBehaviour
 {
+    [SerializeField]
+    GameObject meterPrefab;
     public static ValueHandler Instance;
     public float[] values;
     public float[] idealValues;
-    [SerializeField]
-    Image[] positivePreview;
-    [SerializeField]
-    Image[] negativePreview;
-    [SerializeField]
-    Image[] negativePreviewCover;
-    [SerializeField]
-    Image[] jauges;
-    [SerializeField]
-    Image[] goalIndicators;
+    List<Image> positivePreview;
+    List<Image> negativePreview;
+    List<Image> negativePreviewCover;
+    List<Image> jauges;
+    List<Image> goalIndicators;
 
     void Awake()
     {
@@ -37,26 +34,39 @@ public class ValueHandler : MonoBehaviour
         }
     }
 
-
     void Start()
     {
-        for (int i = 0; i < goalIndicators.Length; i++)
+        positivePreview = new List<Image>();
+        negativePreview = new List<Image>();
+        negativePreviewCover = new List<Image>();
+        jauges = new List<Image>();
+        goalIndicators = new List<Image>();
+
+        SetupLevel();
+        TogglePreview(false);
+    }
+
+    void SetupLevel()
+    {
+        for (int i = 0; i < values.Length; i++)
         {
+            GameObject tmp = Instantiate(meterPrefab, transform);
+            jauges.Add(tmp.transform.Find("Jauge").GetComponent<Image>());
+            positivePreview.Add(tmp.transform.Find("Positive").GetComponent<Image>());
+
+            Transform negativeHolder = tmp.transform.Find("NegativeBar");
+            negativePreviewCover.Add(negativeHolder.Find("Cover").GetComponent<Image>());
+            negativePreview.Add(negativeHolder.Find("Negative").GetComponent<Image>());
+
+            goalIndicators.Add(tmp.transform.Find("Indicator").GetComponent<Image>());
             goalIndicators[i].rectTransform.rotation = Quaternion.Euler(0, 0, -90 - (idealValues[i] / 100) * 360);
         }
         SetValues();
-        TogglePreview(false);
-
-    }
-
-    void Update()
-    {
-        
     }
 
     public void UpdateValues(float[] newValues)
     {
-        for (int i = 0; i < newValues.Length; i++)
+        for (int i = 0; i < values.Length; i++)
         {
             values[i] = Mathf.Clamp(values[i] + newValues[i], 0, 100);
         }
@@ -75,7 +85,7 @@ public class ValueHandler : MonoBehaviour
     public void PreviewValue(float[] newValues)
     {
         //TogglePreview(true);
-        for (int i = 0; i < newValues.Length; i++)
+        for (int i = 0; i < values.Length; i++)
         {
             if (newValues[i] > 0)
             {
@@ -94,7 +104,7 @@ public class ValueHandler : MonoBehaviour
 
     public void TogglePreview(bool status)
     {
-        for (int i = 0; i < positivePreview.Length; i++)
+        for (int i = 0; i < positivePreview.Count; i++)
         {
             positivePreview[i].gameObject.SetActive(status);
             negativePreview[i].gameObject.SetActive(status);
@@ -111,6 +121,6 @@ public class ValueHandler : MonoBehaviour
         }
         print(surplus);
         surplus -= surplus > 20 ? 20 : 0; 
-        return Mathf.RoundToInt(surplus / 70);
+        return Mathf.RoundToInt(surplus / (values.Length * 100 / 5));
     }
 }
