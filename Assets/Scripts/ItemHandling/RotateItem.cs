@@ -23,15 +23,14 @@ public class RotateItem : MonoBehaviour
         dragging = Input.GetMouseButton(0);
         if (Input.GetMouseButtonDown(0))
             rotationInterrupted = true;
-        //if (!rotationInterrupted)
-          //  transform.Rotate(Vector3.up * Time.deltaTime * rotationSpeed);
+        if (!rotationInterrupted)
+            transform.Rotate(Vector3.up * Time.deltaTime * rotationSpeed);
     }
 
     private void FixedUpdate()
     {
         if (dragging)
         {
-            //print(dragSpeed);
             float x = Input.GetAxis("Mouse X") * dragSpeed * Time.fixedDeltaTime;
             float y = Input.GetAxis("Mouse Y") * dragSpeed * Time.fixedDeltaTime;
             rb.AddTorque(Vector3.down * x);

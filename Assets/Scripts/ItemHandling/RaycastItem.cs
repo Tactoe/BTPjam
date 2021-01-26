@@ -28,7 +28,6 @@ public class RaycastItem : MonoBehaviour
                 if (Input.GetMouseButtonDown(0) && hitInfo.collider.tag == "Erasable")
                 {
                     uIManager.ActivateItemCanvas(hitInfo.collider.gameObject, hitInfo.collider.gameObject.GetComponent<ItemData>());
-                    print(hitInfo.collider.gameObject.name);
                     trackingPosition = false;
                 }
             }

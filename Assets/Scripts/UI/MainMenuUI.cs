@@ -12,14 +12,13 @@ public class MainMenuUI : MonoBehaviour
     Animator objectiveAnim;
     Animator canvasAnim;
     CanvasGroup cg;
-    // Start is called before the first frame update
+
     void Start()
     {
         cg = GetComponent<CanvasGroup>();
         canvasAnim = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         

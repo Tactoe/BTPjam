@@ -5,8 +5,10 @@ using UnityEngine;
 public class ItemData : MonoBehaviour
 {
     public string itemName;
+    [TextArea(5, 6)]
     public string description;
     public float[] values;
+    [TextArea(5, 10)]
     public string[] rambling;
     [SerializeField]
     float sizeNew = 1.2f;
@@ -14,7 +16,7 @@ public class ItemData : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameObject.tag = "Erasable";
     }
 
     public float getSizeMod()
