@@ -5,7 +5,7 @@ using UnityEngine;
 public class RotateItem : MonoBehaviour
 {
     public float rotationSpeed = 45;
-    float dragSpeed = 150;
+    float dragSpeed = 50;
     float resetRotationTimer = 2;
     public bool rotationInterrupted, dragging;
     Rigidbody rb;
@@ -14,6 +14,7 @@ public class RotateItem : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
+        rb.constraints = RigidbodyConstraints.None;
         Vector3 scale = transform.localScale;
         dragSpeed *= Mathf.Max(scale.x, scale.y, scale.z);
     }
@@ -37,8 +38,8 @@ public class RotateItem : MonoBehaviour
         {
             float x = Input.GetAxis("Mouse X") * dragSpeed * Time.fixedDeltaTime;
             float y = Input.GetAxis("Mouse Y") * dragSpeed * Time.fixedDeltaTime;
-            rb.AddTorque(Vector3.down * x);
-            rb.AddTorque(Vector3.right * y);
+            rb.AddTorque(Vector3.down * x, ForceMode.VelocityChange);
+            rb.AddTorque(Vector3.right * y, ForceMode.VelocityChange);
         }
         if (rb.angularVelocity.magnitude < 0.1f)
         {

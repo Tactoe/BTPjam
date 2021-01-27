@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7360737836275290284
+--- !u!1 &3367697047903787697
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,49 +8,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7360737836275290285}
-  - component: {fileID: 7360737836275290281}
-  - component: {fileID: 7360737836275290280}
-  - component: {fileID: 7360737836275290287}
-  - component: {fileID: 7360737836275290286}
-  - component: {fileID: -4775227004098761743}
-  - component: {fileID: 7794216984499542295}
+  - component: {fileID: 3367697047903787696}
+  - component: {fileID: 3367697047903787700}
+  - component: {fileID: 3367697047903787701}
+  - component: {fileID: 3367697047903787699}
+  - component: {fileID: 430938365432991026}
+  - component: {fileID: 8164446805726746533}
   m_Layer: 0
-  m_Name: Wardrobe
+  m_Name: Beach ball
   m_TagString: Erasable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7360737836275290285
+--- !u!4 &3367697047903787696
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7360737836275290284}
+  m_GameObject: {fileID: 3367697047903787697}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.28, y: 0.51, z: -2.02}
-  m_LocalScale: {x: 2.4083, y: 3.2874, z: 1}
+  m_LocalPosition: {x: 2.31, y: 0.57, z: -4.27}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &7360737836275290281
+--- !u!33 &3367697047903787700
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7360737836275290284}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &7360737836275290280
+  m_GameObject: {fileID: 3367697047903787697}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &3367697047903787701
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7360737836275290284}
+  m_GameObject: {fileID: 3367697047903787697}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -63,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: afca456a4e1f49943bfea866e4b4af57, type: 2}
+  - {fileID: 2100000, guid: a604bc3d1f2b4b44280d78c18c758075, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85,47 +84,35 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7360737836275290287
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7360737836275290284}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7360737836275290286
+--- !u!114 &3367697047903787699
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7360737836275290284}
+  m_GameObject: {fileID: 3367697047903787697}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 418daf1dc18f33745842aa941177f5b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Wardrobe
-  description: A cool Icy blue...
+  itemName: Beach Ball
+  description: Warms the heart like a summer morning.
   values:
-  - 5
-  - -3
+  - -10
   - 0
-  - 0
-  rambling: []
-  sizeNew: 1.2
---- !u!54 &-4775227004098761743
+  rambling:
+  - Beach ball, more like b-- hold on, someone's calling me -- yes. hmhm. oh so we're
+    still going for that R rating? -- Ah, yes, nevermind.
+  deathParticles: {fileID: 5042367466021304291, guid: adb80b6c52c98d941a4d24c2620f89ff, type: 3}
+  sizeModifier: 0
+--- !u!54 &430938365432991026
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7360737836275290284}
+  m_GameObject: {fileID: 3367697047903787697}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 1
@@ -135,19 +122,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &7794216984499542295
-MonoBehaviour:
+--- !u!135 &8164446805726746533
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7360737836275290284}
+  m_GameObject: {fileID: 3367697047903787697}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00e8a4ab895d66040917d6be0b2a17fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefab: {fileID: 7959250015677293579, guid: 576558f95f345e146bf66ee9c0c1ddb2, type: 3}
-  spawnAmount: 10
-  minRadius: -1
-  maxRadius: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}

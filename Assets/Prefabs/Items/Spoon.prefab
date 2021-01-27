@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7959250015677293579
+--- !u!1 &4961609745274801084
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7959250015677293578}
-  - component: {fileID: 7959250015677293582}
-  - component: {fileID: 7959250015677293583}
-  - component: {fileID: 7959250015677293577}
-  - component: {fileID: 4986497504584463240}
-  - component: {fileID: 80915510209560311}
+  - component: {fileID: 4961609745274801072}
+  - component: {fileID: 4961609745274801073}
+  - component: {fileID: 4961609745274801074}
+  - component: {fileID: 4961609745274801075}
+  - component: {fileID: 8856560933374022972}
+  - component: {fileID: 7485214588010364389}
   m_Layer: 0
-  m_Name: Moth ball
+  m_Name: Spoon
   m_TagString: Erasable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7959250015677293578
+--- !u!4 &4961609745274801072
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7959250015677293579}
+  m_GameObject: {fileID: 4961609745274801084}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.88, y: 0.2, z: -4.06}
-  m_LocalScale: {x: 0.25, y: 0.06, z: 0.25}
+  m_LocalPosition: {x: 3.33, y: 1.13, z: 1.23}
+  m_LocalScale: {x: 0.18392007, y: 0.1018294, z: 0.40807787}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &7959250015677293582
+--- !u!33 &4961609745274801073
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7959250015677293579}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &7959250015677293583
+  m_GameObject: {fileID: 4961609745274801084}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &4961609745274801074
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7959250015677293579}
+  m_GameObject: {fileID: 4961609745274801084}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8f94ce4b26f9a1244b2d84ba069d1845, type: 2}
+  - {fileID: 2100000, guid: 260b147b747b99c4d8c1fec1f0090bd5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84,35 +84,46 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &7959250015677293577
+--- !u!65 &4961609745274801075
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4961609745274801084}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8856560933374022972
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7959250015677293579}
+  m_GameObject: {fileID: 4961609745274801084}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 418daf1dc18f33745842aa941177f5b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Mothball
-  description: To be completely honest, it should be called a mothcylinder
+  itemName: Spoon
+  description: I never learned how to read
   values:
-  - -3
+  - 20
   - 0
-  - 0
-  - 0
-  rambling:
-  - I'll take moths over those abominations any day thank you
+  rambling: []
+  deathParticles: {fileID: 5042367466021304291, guid: adb80b6c52c98d941a4d24c2620f89ff, type: 3}
   sizeModifier: 0
---- !u!54 &4986497504584463240
+--- !u!54 &7485214588010364389
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7959250015677293579}
+  m_GameObject: {fileID: 4961609745274801084}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 1
@@ -121,18 +132,4 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
---- !u!64 &80915510209560311
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7959250015677293579}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  m_CollisionDetection: 0

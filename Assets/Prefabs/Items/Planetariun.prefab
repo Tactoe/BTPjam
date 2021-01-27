@@ -6561,7 +6561,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 14
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!65 &3396785352197673158
 BoxCollider:
@@ -6593,8 +6593,7 @@ MonoBehaviour:
   values:
   - -10
   - 0
-  - 0
-  - 0
   rambling:
   - My wife brought this in trying to make a point. It's flat, I rest my case.
+  deathParticles: {fileID: 5042367466021304291, guid: adb80b6c52c98d941a4d24c2620f89ff, type: 3}
   sizeModifier: 1.3

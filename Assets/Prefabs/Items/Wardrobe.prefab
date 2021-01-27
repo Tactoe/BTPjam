@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 7360737836275290280}
   - component: {fileID: 7360737836275290287}
   - component: {fileID: 7360737836275290286}
-  - component: {fileID: 5576000217290901295}
+  - component: {fileID: -4775227004098761743}
+  - component: {fileID: 7794216984499542295}
   m_Layer: 0
-  m_Name: Anxious block
+  m_Name: Wardrobe
   m_TagString: Erasable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 7360737836275290284}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.28, y: 0.51, z: -2.02}
-  m_LocalScale: {x: 2.6106, y: 1, z: 2.7832}
+  m_LocalScale: {x: 2.4083, y: 3.2874, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -62,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 67babcc6b4e661a4e8de50b0582bcdca, type: 2}
+  - {fileID: 2100000, guid: afca456a4e1f49943bfea866e4b4af57, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -109,18 +110,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 418daf1dc18f33745842aa941177f5b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Anxious Table
-  description: Used to be an anxious block, but when life gives you lemons...
+  itemName: Wardrobe
+  description: Can alternatively be used to ward off any pesky robes harrassing you.
+    You hear something... <i>rolling</i> inside...?
   values:
-  - 0
-  - 10
-  - 40
-  - 0
-  rambling:
-  - 'My life has dramatically improved ever since I stopped carrying my anxiety around
-    and started using it as a kitchen table. '
-  sizeNew: 1.9
---- !u!54 &5576000217290901295
+  - 5
+  - -3
+  rambling: []
+  deathParticles: {fileID: 5042367466021304291, guid: adb80b6c52c98d941a4d24c2620f89ff, type: 3}
+  sizeModifier: 0
+--- !u!54 &-4775227004098761743
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -136,3 +135,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7794216984499542295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7360737836275290284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00e8a4ab895d66040917d6be0b2a17fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 7959250015677293579, guid: 576558f95f345e146bf66ee9c0c1ddb2, type: 3}
+  spawnAmount: 10
+  minRadius: -1
+  maxRadius: 1

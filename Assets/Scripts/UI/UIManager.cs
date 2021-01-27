@@ -14,8 +14,11 @@ public class UIManager : MonoBehaviour
     ShowcaseItem showcase;
     [SerializeField]
     GameObject showcaseCamera;
+    [SerializeField]
+    GameObject rateButton;
     GameObject rtGO;
     GameObject lastObjectChecked;
+    public GameObject[] glist;
     public bool inMenu = false;
     public Dictionary<string, bool> activeMenus;
 
@@ -38,6 +41,7 @@ public class UIManager : MonoBehaviour
         inMenu = true;
         showcaseCamera.SetActive(true);
         examineItemCanvas.SetActive(true);
+        rateButton.SetActive(false);
         lastObjectChecked = toShowcase;
         if (data.rambling != null && data.rambling.Length > 0)
         {
@@ -63,20 +67,32 @@ public class UIManager : MonoBehaviour
         inMenu = false;
         showcaseCamera.SetActive(false);
         examineItemCanvas.SetActive(false);
+        rateButton.SetActive(true);
         rtGO.SetActive(false);
         ValueHandler.Instance.TogglePreview(false);
-        FindObjectOfType<TeleportBehindYou>().Teleport();
+        TeleportBehindYou tp = FindObjectOfType<TeleportBehindYou>();
+        if (tp != null)
+            tp.Teleport();
+        
     }
 
     public void DitchObject()
     {
-        ValueHandler.Instance.UpdateValues(lastObjectChecked.GetComponent<ItemData>().values);
+        //ValueHandler.Instance.UpdateValues(lastObjectChecked.GetComponent<ItemData>().values);
         if (lastObjectChecked != null)
         {
-            SpawnItemOnDeath deathSpawner = lastObjectChecked.GetComponent<SpawnItemOnDeath>();
-            if (deathSpawner != null)
-                deathSpawner.SpawnItems();
+            lastObjectChecked.GetComponent<ItemData>().DitchObject();
             Destroy(lastObjectChecked);
+        }
+        glist = GameObject.FindGameObjectsWithTag("Erasable");
+        print(GameObject.FindGameObjectsWithTag("Erasable").Length);
+
+        if (GameObject.FindGameObjectsWithTag("Erasable").Length - 2 <= 0)
+        {
+            GameObject dio = GameObject.Find("DioramaSupport");
+            dio.GetComponent<ItemData>().enabled = true;
+            dio.tag = "Erasable";
+            
         }
         TurnOffItemCanvas();
     }

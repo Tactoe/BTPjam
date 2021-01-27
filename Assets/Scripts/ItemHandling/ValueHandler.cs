@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class ValueHandler : MonoBehaviour
 {
     [SerializeField]
     GameObject meterPrefab;
     public static ValueHandler Instance;
+    public float scaleUpValue = 1.2f;
+    public float scaleUpTime = 0.1f;
     public float[] values;
     public float[] idealValues;
     public Color[] jaugeColors;
@@ -52,9 +55,11 @@ public class ValueHandler : MonoBehaviour
         for (int i = 0; i < values.Length; i++)
         {
             GameObject tmp = Instantiate(meterPrefab, transform);
+            tmp.name = "Meter " + i;
             jauges.Add(tmp.transform.Find("Jauge").GetComponent<Image>());
             positivePreview.Add(tmp.transform.Find("Positive").GetComponent<Image>());
             jauges[i].color = jaugeColors[i];
+            jauges[i].gameObject.name = "Jauge " + i;
 
             Transform negativeHolder = tmp.transform.Find("NegativeBar");
             negativePreview.Add(negativeHolder.Find("Negative").GetComponent<Image>());
@@ -71,6 +76,11 @@ public class ValueHandler : MonoBehaviour
     {
         for (int i = 0; i < values.Length; i++)
         {
+            if (newValues[i] != 0)
+            {
+                jauges[i].transform.parent.transform.DORewind();
+                jauges[i].transform.parent.transform.DOPunchScale(Vector3.one * scaleUpValue, scaleUpTime, 10);
+            }
             values[i] = Mathf.Clamp(values[i] + newValues[i], 0, 100);
         }
         SetValues();
@@ -122,7 +132,6 @@ public class ValueHandler : MonoBehaviour
         {
             surplus += Mathf.Abs(values[i] - idealValues[i]);
         }
-        print(surplus);
         surplus -= surplus > 20 ? 20 : 0; 
         return Mathf.RoundToInt(surplus / (values.Length * 100 / 5));
     }
