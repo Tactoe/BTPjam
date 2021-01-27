@@ -109,8 +109,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 418daf1dc18f33745842aa941177f5b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Anxious block
-  description: It won't leave you alone
+  itemName: Anxious Table
+  description: Used to be an anxious block, but when life gives you lemons...
   values:
   - 0
   - 10

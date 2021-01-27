@@ -10,18 +10,12 @@ public class ItemData : MonoBehaviour
     public float[] values;
     [TextArea(5, 10)]
     public string[] rambling;
-    [SerializeField]
-    float sizeNew = 1.2f;
-    float sizeModifier = 1.2f;
+    
+    public float sizeModifier = 0;
     // Start is called before the first frame update
     void Start()
     {
         gameObject.tag = "Erasable";
-    }
-
-    public float getSizeMod()
-    {
-        return sizeNew > sizeModifier ? sizeNew : sizeModifier;
     }
 
     // Update is called once per frame

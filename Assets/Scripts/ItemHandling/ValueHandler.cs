@@ -10,6 +10,7 @@ public class ValueHandler : MonoBehaviour
     public static ValueHandler Instance;
     public float[] values;
     public float[] idealValues;
+    public Color[] jaugeColors;
     List<Image> positivePreview;
     List<Image> negativePreview;
     List<Image> negativePreviewCover;
@@ -53,10 +54,12 @@ public class ValueHandler : MonoBehaviour
             GameObject tmp = Instantiate(meterPrefab, transform);
             jauges.Add(tmp.transform.Find("Jauge").GetComponent<Image>());
             positivePreview.Add(tmp.transform.Find("Positive").GetComponent<Image>());
+            jauges[i].color = jaugeColors[i];
 
             Transform negativeHolder = tmp.transform.Find("NegativeBar");
-            negativePreviewCover.Add(negativeHolder.Find("Cover").GetComponent<Image>());
             negativePreview.Add(negativeHolder.Find("Negative").GetComponent<Image>());
+            negativePreviewCover.Add(negativeHolder.Find("Cover").GetComponent<Image>());
+            negativePreviewCover[i].color = jaugeColors[i];
 
             goalIndicators.Add(tmp.transform.Find("Indicator").GetComponent<Image>());
             goalIndicators[i].rectTransform.rotation = Quaternion.Euler(0, 0, -90 - (idealValues[i] / 100) * 360);

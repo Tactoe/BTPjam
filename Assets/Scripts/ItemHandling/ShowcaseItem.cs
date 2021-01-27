@@ -30,8 +30,10 @@ public class ShowcaseItem : MonoBehaviour
             Destroy(currentShowcase);
         nameText.text = data.itemName;
         ramblingNameText.text = data.itemName;
-        //uiCam.orthographicSize = data.getSizeMod();
-        setSize(newShowcase.transform.localScale);
+        if (data.sizeModifier != 0)
+            uiCam.orthographicSize = data.sizeModifier;
+        else
+            setSize(newShowcase.transform);
         descriptionText.text = data.description;
         currentShowcase = setupObjectShowcase(newShowcase);
     }
@@ -43,6 +45,11 @@ public class ShowcaseItem : MonoBehaviour
         ret.layer = 5;
         ret.AddComponent<RotateItem>();
         ret.transform.position = spawnLocation.transform.position;
+        Transform pivot = ret.transform.Find("Pivot");
+        if (pivot != null)
+        {
+            ret.transform.position = ret.transform.position - pivot.localPosition;
+        }
         ret.transform.rotation = Quaternion.Euler(Vector3.left * 10);
         return ret;
     }
@@ -59,9 +66,16 @@ public class ShowcaseItem : MonoBehaviour
         }
     }
 
-    void setSize(Vector3 scale)
+    void setSize(Transform tf)
     {
+        Vector3 scale = tf.localScale;
         uiCam.orthographicSize = Mathf.Max(scale.x, scale.y, scale.z);
+        
+        for (int i = 0; i < tf.childCount; i++)
+        {
+            scale = tf.GetChild(i).transform.localScale;
+            uiCam.orthographicSize = Mathf.Max(uiCam.orthographicSize, scale.x, scale.y, scale.z);
+        }
         if (scale.x == scale.y && scale.x == scale.z)
             uiCam.orthographicSize += 0.08f;
     }

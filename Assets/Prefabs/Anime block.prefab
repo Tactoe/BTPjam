@@ -113,12 +113,13 @@ MonoBehaviour:
   itemName: Anime Block
   description: Natural predator of the Crunchy Roll. Careful not to blink.
   values:
-  - 10
+  - 0
   - 30
-  - 20
-  - 40
+  - 0
+  - 0
   rambling:
   - Please refrain from cussing while standing in the vicinity of my wife.
+  sizeNew: 1.2
 --- !u!54 &3730915190294089827
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -148,3 +149,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   positionParent: {fileID: 0}
+  canTeleport: 0

@@ -96,16 +96,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 418daf1dc18f33745842aa941177f5b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Anxious block
-  description: It won't leave you alone
+  itemName: Beach Ball
+  description: Warms the heart like a summer morning.
   values:
+  - -10
   - 0
-  - 10
-  - 40
+  - 0
   - 0
   rambling:
-  - 'My life has dramatically improved ever since I stopped carrying my anxiety around
-    and started using it as a kitchen table. '
+  - Beach ball, more like b-- hold on, someone's calling me -- yes. hmhm. oh so we're
+    still going for that R rating? -- Ah, yes, nevermind.
   sizeNew: 1.9
 --- !u!54 &430938365432991026
 Rigidbody:

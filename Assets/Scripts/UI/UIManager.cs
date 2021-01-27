@@ -14,12 +14,15 @@ public class UIManager : MonoBehaviour
     ShowcaseItem showcase;
     [SerializeField]
     GameObject showcaseCamera;
+    GameObject rtGO;
     GameObject lastObjectChecked;
     public bool inMenu = false;
     public Dictionary<string, bool> activeMenus;
 
     void Start()
     {
+        RamblingText rt = examineItemCanvas.GetComponentInChildren<RamblingText>(true);
+        rtGO = rt.gameObject;
         //activeMenus = new Dictionary<string, bool>();
         //foreach (GameObject child in GetComponentsInChildren<GameObject>())
         //{
@@ -40,7 +43,7 @@ public class UIManager : MonoBehaviour
         {
             RamblingText rt =  examineItemCanvas.GetComponentInChildren<RamblingText>(true);
             rt.currentRambling = data.rambling;
-            rt.gameObject.SetActive(true);
+            rtGO.SetActive(true);
         }
         TeleportBehindYou tp = toShowcase.GetComponent<TeleportBehindYou>();
         if (tp != null)
@@ -60,6 +63,7 @@ public class UIManager : MonoBehaviour
         inMenu = false;
         showcaseCamera.SetActive(false);
         examineItemCanvas.SetActive(false);
+        rtGO.SetActive(false);
         ValueHandler.Instance.TogglePreview(false);
         FindObjectOfType<TeleportBehindYou>().Teleport();
     }
@@ -68,7 +72,12 @@ public class UIManager : MonoBehaviour
     {
         ValueHandler.Instance.UpdateValues(lastObjectChecked.GetComponent<ItemData>().values);
         if (lastObjectChecked != null)
+        {
+            SpawnItemOnDeath deathSpawner = lastObjectChecked.GetComponent<SpawnItemOnDeath>();
+            if (deathSpawner != null)
+                deathSpawner.SpawnItems();
             Destroy(lastObjectChecked);
+        }
         TurnOffItemCanvas();
     }
 

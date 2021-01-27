@@ -6,6 +6,7 @@ public class RotateItem : MonoBehaviour
 {
     public float rotationSpeed = 45;
     float dragSpeed = 150;
+    float resetRotationTimer = 2;
     public bool rotationInterrupted, dragging;
     Rigidbody rb;
     // Start is called before the first frame update
@@ -22,7 +23,10 @@ public class RotateItem : MonoBehaviour
     {
         dragging = Input.GetMouseButton(0);
         if (Input.GetMouseButtonDown(0))
+        {
+            StopCoroutine(ResetRotation());
             rotationInterrupted = true;
+        }
         if (!rotationInterrupted)
             transform.Rotate(Vector3.up * Time.deltaTime * rotationSpeed);
     }
@@ -36,6 +40,16 @@ public class RotateItem : MonoBehaviour
             rb.AddTorque(Vector3.down * x);
             rb.AddTorque(Vector3.right * y);
         }
+        if (rb.angularVelocity.magnitude < 0.1f)
+        {
+            StartCoroutine(ResetRotation());
+        }
+    }
+
+    IEnumerator ResetRotation()
+    {
+        yield return new WaitForSeconds(resetRotationTimer);
+        rotationInterrupted = false;
     }
 
 }

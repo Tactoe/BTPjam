@@ -99,13 +99,13 @@ MonoBehaviour:
   itemName: Mothball
   description: To be completely honest, it should be called a mothcylinder
   values:
+  - -3
   - 0
-  - 10
-  - 40
+  - 0
   - 0
   rambling:
   - I'll take moths over those abominations any day thank you
-  sizeNew: 1.9
+  sizeModifier: 0
 --- !u!54 &4986497504584463240
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -121,7 +121,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!64 &80915510209560311
 MeshCollider:
   m_ObjectHideFlags: 0

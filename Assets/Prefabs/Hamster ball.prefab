@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 3367697047903787699}
   - component: {fileID: 430938365432991026}
   - component: {fileID: 9114130861475813947}
+  - component: {fileID: -3758973165771225009}
   m_Layer: 0
   m_Name: Hamster ball
   m_TagString: Erasable
@@ -181,9 +182,9 @@ MonoBehaviour:
   itemName: Hamster ball
   description: Seems like the poor little guy is going nuts
   values:
+  - -10
   - 0
-  - 10
-  - 40
+  - 0
   - 0
   rambling:
   - Colonel has put a lot of strain on me and my wife's relationship.
@@ -218,6 +219,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1.0000007
   m_Center: {x: -0.00000023841858, y: 0, z: 0.0000006556511}
+--- !u!114 &-3758973165771225009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3367697047903787697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00e8a4ab895d66040917d6be0b2a17fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 3715770205411709888, guid: 1448a1946886d8d4f86e6cfb0c9ef649, type: 3}
+  spawnAmount: 1
+  minRadius: -0.4
+  maxRadius: 0.4
 --- !u!1 &3454087712060483436
 GameObject:
   m_ObjectHideFlags: 0
@@ -429,6 +446,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d5a21e53f3e02e4aa3135da7063124c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  C: {x: 0, y: 0, z: 0}
+  R: 0
+  atomRigidbody: {fileID: 0}
 --- !u!1 &7220172334165045591
 GameObject:
   m_ObjectHideFlags: 0

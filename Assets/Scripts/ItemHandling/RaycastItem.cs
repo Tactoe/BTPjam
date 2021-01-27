@@ -25,9 +25,15 @@ public class RaycastItem : MonoBehaviour
         {
             if (Physics.Raycast(ray, out hitInfo))
             {
-                if (Input.GetMouseButtonDown(0) && hitInfo.collider.tag == "Erasable")
+                if (Input.GetMouseButtonDown(0) && (hitInfo.collider.tag == "Erasable" || hitInfo.collider.transform.parent.tag == "Erasable"))
                 {
-                    uIManager.ActivateItemCanvas(hitInfo.collider.gameObject, hitInfo.collider.gameObject.GetComponent<ItemData>());
+                    if (hitInfo.collider.transform.parent != null && hitInfo.collider.transform.parent.tag == "Erasable")
+                    {
+                        GameObject parent = hitInfo.collider.transform.parent.gameObject;
+                        uIManager.ActivateItemCanvas(parent, parent.gameObject.GetComponent<ItemData>());
+                    }
+                    else
+                        uIManager.ActivateItemCanvas(hitInfo.collider.gameObject, hitInfo.collider.gameObject.GetComponent<ItemData>());
                     trackingPosition = false;
                 }
             }
