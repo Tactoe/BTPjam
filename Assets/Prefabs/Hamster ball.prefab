@@ -189,7 +189,7 @@ MonoBehaviour:
   rambling:
   - Colonel has put a lot of strain on me and my wife's relationship.
   - Every time I try to bring up the subject we end up going around in circles...
-  sizeNew: 1.9
+  sizeModifier: 0
 --- !u!54 &430938365432991026
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -233,7 +233,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 3715770205411709888, guid: 1448a1946886d8d4f86e6cfb0c9ef649, type: 3}
   spawnAmount: 1
-  minRadius: -0.4
+  minRadius: 0
   maxRadius: 0.4
 --- !u!1 &3454087712060483436
 GameObject:
