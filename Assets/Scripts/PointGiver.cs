@@ -19,7 +19,6 @@ public class PointGiver : MonoBehaviour
     void Start()
     {
         img = GetComponent<Image>();
-        print(img);
     }
 
     public void SetupGiver(int n, bool _isNegative)
@@ -28,12 +27,12 @@ public class PointGiver : MonoBehaviour
 
         targetIndex = n;
         isNegative = _isNegative;
-        print(img);
 
         targetGO = GameObject.Find("Jauge " + n);
         target = targetGO.GetComponent<RectTransform>();
+        transform.localScale = Vector3.zero;
         transform.SetParent(targetGO.transform.parent);
-        transform.DOMove(target.position, animDuration).SetEase(animEase).OnComplete(Shrink);
+        transform.DOScale(1, 0.2f).OnComplete(Move);
     }
 
     private void Update()
@@ -50,6 +49,12 @@ public class PointGiver : MonoBehaviour
     public void SetColor()
     {
         img.color = Color.red;
+
+    }
+
+    void Move()
+    {
+        transform.DOMove(target.position, animDuration).SetEase(animEase).OnComplete(Shrink);
     }
 
     void Shrink()

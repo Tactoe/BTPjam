@@ -19,6 +19,8 @@ public class ValueHandler : MonoBehaviour
     List<Image> negativePreviewCover;
     List<Image> jauges;
     List<Image> goalIndicators;
+    AudioSource[] audioSrc;
+
 
     void Awake()
     {
@@ -40,6 +42,7 @@ public class ValueHandler : MonoBehaviour
 
     void Start()
     {
+        audioSrc = GetComponents<AudioSource>();
         positivePreview = new List<Image>();
         negativePreview = new List<Image>();
         negativePreviewCover = new List<Image>();
@@ -80,11 +83,21 @@ public class ValueHandler : MonoBehaviour
             {
                 jauges[i].transform.parent.transform.DORewind();
                 jauges[i].transform.parent.transform.DOPunchScale(Vector3.one * scaleUpValue, scaleUpTime, 10);
+                if (newValues[i] > 0)
+                    audioSrc[0].Play();
+                else
+                    audioSrc[1].Play();
             }
             values[i] = Mathf.Clamp(values[i] + newValues[i], 0, 100);
+            if (newValues[i] > 0)
+                positivePreview[i].fillAmount += newValues[i] / 100;
+            else
+            {
+                negativePreviewCover[i].fillAmount += newValues[i] / 100;
+                negativePreview[i].fillAmount += newValues[i] / 100;
+            }
         }
         SetValues();
-        TogglePreview(false);
     }
 
     void SetValues()

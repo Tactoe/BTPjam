@@ -89,6 +89,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  animDuration: 1
+  animDuration: 0.3
   shrinkDuration: 0.2
   animEase: 19

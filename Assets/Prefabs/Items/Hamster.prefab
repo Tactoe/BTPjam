@@ -337,6 +337,7 @@ GameObject:
   - component: {fileID: -930286257244574428}
   - component: {fileID: 6272799961700338401}
   - component: {fileID: 6459502046892670369}
+  - component: {fileID: -4796548539269581004}
   m_Layer: 0
   m_Name: Hamster
   m_TagString: Untagged
@@ -429,6 +430,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-4796548539269581004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3715770205411709888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00e8a4ab895d66040917d6be0b2a17fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 3715770205411709888, guid: b0ced55346304e74fa6180480eddfdba, type: 3}
+  spawnAmount: 1
+  minRadius: 0
+  maxRadius: 0.05
 --- !u!1 &4762529885758037521
 GameObject:
   m_ObjectHideFlags: 0

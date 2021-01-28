@@ -38,10 +38,15 @@ public class ItemData : MonoBehaviour
                 ParticleSystem ps = deathParticles.GetComponent<ParticleSystem>();
                 deathParticles.GetComponent<Particulator>().targetJauge = i;
                 deathParticles.GetComponent<Particulator>().isNegative = (value < 0);
+
                 var main = ps.main;
-                main.startColor = ValueHandler.Instance.jaugeColors[i];
                 var emission = ps.emission;
                 emission.rateOverTime = Mathf.Abs(value) + 1;
+                var trail = ps.GetTrails();
+                //var sub = ps.subEmitters.GetSubEmitterSystem(0);
+                //var subMain = sub.main;
+                main.startColor = ValueHandler.Instance.jaugeColors[i];
+                //subMain.startColor = ValueHandler.Instance.jaugeColors[i];
 
                 GameObject tmp = Instantiate(deathParticles);
                 tmp.transform.position = transform.position;

@@ -114,7 +114,7 @@ MonoBehaviour:
   description: Natural predator of the Crunchy Roll. Careful not to blink.
   values:
   - 0
-  - 1
+  - 30
   rambling:
   - Please refrain from cussing while standing in the vicinity of my wife.
   deathParticles: {fileID: 5042367466021304291, guid: adb80b6c52c98d941a4d24c2620f89ff, type: 3}
