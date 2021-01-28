@@ -7,6 +7,7 @@ public class TeleportBehindYou : MonoBehaviour
     public GameObject positionParent;
     List<Transform> positions;
     public bool canTeleport;
+    public Material trigred;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +32,7 @@ public class TeleportBehindYou : MonoBehaviour
     {
         if (canTeleport)
         {
+            gameObject.GetComponent<Renderer>().material = trigred;
             int index = Random.Range(0, positions.Count);
             print(index);
             transform.position = positions[index].position;

@@ -19,13 +19,13 @@ public class DialogueReader : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        cg.alpha = 0;
+        //cg.alpha = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             if (dialogueIndex < currentDialogue.dialogue.Count)
             {
@@ -86,7 +86,10 @@ public class DialogueReader : MonoBehaviour
 
     void CloseDialogue()
     {
-        GameManager.Instance.NextScene();
-        cg.alpha = 0;
+        TransitionBlock[] tb = FindObjectsOfType<TransitionBlock>(true);
+        foreach (TransitionBlock b in tb)
+        {
+            b.gameObject.SetActive(true);
+        }
     }
 }

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3730915190294089827}
   - component: {fileID: 1376595098}
   m_Layer: 0
-  m_Name: Anime block
+  m_Name: Anime Block
   m_TagString: Erasable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -117,6 +117,8 @@ MonoBehaviour:
   - 30
   rambling:
   - Please refrain from cussing while standing in the vicinity of my wife.
+  - Also, please don't dump my wife.
+  - If anything, that's my job.
   deathParticles: {fileID: 5042367466021304291, guid: adb80b6c52c98d941a4d24c2620f89ff, type: 3}
   sizeModifier: 0
 --- !u!54 &3730915190294089827
@@ -149,3 +151,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   positionParent: {fileID: 0}
   canTeleport: 0
+  trigred: {fileID: 2100000, guid: 28489fa1c6552bf42a0bd6c92b51bbe4, type: 2}

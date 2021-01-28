@@ -99,7 +99,7 @@ MonoBehaviour:
   itemName: Mothball
   description: To be completely honest, it should be called a mothcylinder
   values:
-  - -3
+  - -5
   - 0
   rambling:
   - I'll take moths over those abominations any day thank you
