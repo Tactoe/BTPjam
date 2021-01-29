@@ -25,7 +25,7 @@ public class RaycastItem : MonoBehaviour
         {
             if (Physics.Raycast(ray, out hitInfo))
             {
-                if (Input.GetMouseButtonDown(0) &&
+                if (!GameManager.Instance.pauseMenu.activeInHierarchy && Input.GetMouseButtonDown(0) &&
                     (hitInfo.collider.tag == "Erasable" || (hitInfo.collider.transform.parent != null && hitInfo.collider.transform.parent.tag == "Erasable")))
                 {
                     if (hitInfo.collider.transform.parent != null && hitInfo.collider.transform.parent.tag == "Erasable")

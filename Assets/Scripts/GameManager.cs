@@ -29,6 +29,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        pauseMenu.SetActive(false);
+    }
+
     public void ExitGame()
     {
         if (Application.platform == RuntimePlatform.WebGLPlayer)
@@ -43,12 +48,14 @@ public class GameManager : MonoBehaviour
 
     private void OnLevelWasLoaded(int level)
     {
+        if (SceneManager.GetActiveScene().buildIndex < 2)
+            murderMode = false;
+        Time.timeScale = 1;
         pauseMenu.SetActive(false);
     }
 
     public void ReloadScene()
     {
-        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
@@ -64,8 +71,6 @@ public class GameManager : MonoBehaviour
 
     public void HandleEndScene(bool isRetrying)
     {
-        print("ere");
-        print(murderMode);
         if (murderMode)
         {
             NextScene();
@@ -75,7 +80,7 @@ public class GameManager : MonoBehaviour
             if (isRetrying)
                 ReloadScene();
             else
-                MainMenu();
+                ExitGame();
         }
     }
 
