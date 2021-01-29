@@ -16,16 +16,22 @@ public class DialogueReader : MonoBehaviour
     [SerializeField]
     CanvasGroup cg;
     int dialogueIndex;
+    public bool inDialogue;
     // Start is called before the first frame update
     void Start()
     {
         //cg.alpha = 0;
     }
 
+    public void ActivateDialogue()
+    {
+        inDialogue = true;
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.KeypadEnter) || (inDialogue && Input.GetMouseButtonDown(0)))
         {
             if (dialogueIndex < currentDialogue.dialogue.Count)
             {

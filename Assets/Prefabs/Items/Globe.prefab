@@ -151,6 +151,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Globe
       objectReference: {fileID: 0}
+    - target: {fileID: 6317578925029434746, guid: cda7cb07a6b6211479469f3d02547231, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 86df1b540f741fb4f90b16ce38d0fefc, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cda7cb07a6b6211479469f3d02547231, type: 3}
 --- !u!4 &1376424877798382068 stripped

@@ -866,7 +866,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 4
+      scalar: 31
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -4824,4 +4824,4 @@ MonoBehaviour:
   toInstantiate: {fileID: 6455862645606026280, guid: e51e7697352796441ab3eea097600aa8, type: 3}
   canvasGO: {fileID: 0}
   targetJauge: 1
-  isNegative: 1
+  isNegative: 0

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class RamblingText : MonoBehaviour
@@ -11,10 +12,12 @@ public class RamblingText : MonoBehaviour
     int ramblingIndex = 0;
     TextMeshProUGUI rambling;
     bool isTalking;
+    public Sprite[] sprites;
+    Image buttonSprite;
     // Start is called before the first frame update
     void Start()
     {
-        
+        buttonSprite = GetComponent<Image>();
     }
 
     // Update is called once per frame
@@ -26,7 +29,7 @@ public class RamblingText : MonoBehaviour
         }
     }
 
-    void UpdateRambling()
+    public void UpdateRambling()
     {
         if (isTalking)
         {
@@ -42,6 +45,7 @@ public class RamblingText : MonoBehaviour
         }
         else
         {
+            buttonSprite.sprite = sprites[1];
             isTalking = true;
             rambling = ramblingTextbox.GetComponentInChildren<TextMeshProUGUI>();
             rambling.text = currentRambling[ramblingIndex];
@@ -51,6 +55,7 @@ public class RamblingText : MonoBehaviour
 
     void CloseRambling()
     {
+        buttonSprite.sprite = sprites[0];
         isTalking = false;
         ramblingIndex = 0;
         //currentRambling = new string[0];

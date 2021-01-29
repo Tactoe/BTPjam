@@ -32,7 +32,15 @@ public class TeleportBehindYou : MonoBehaviour
     {
         if (canTeleport)
         {
-            gameObject.GetComponent<Renderer>().material = trigred;
+            ItemData data = gameObject.GetComponent<ItemData>();
+            data.description = "You blinked, didn't you.";
+            if (GameObject.Find("Hamster") == null && GameObject.Find("Hamster Ball") == null)
+            {
+                gameObject.GetComponent<Renderer>().material = trigred;
+                data.itemName = "You murdered Colonel";
+                data.description = "you absolute monster.";
+                data.rambling = new string[0];
+            }
             int index = Random.Range(0, positions.Count);
             print(index);
             transform.position = positions[index].position;

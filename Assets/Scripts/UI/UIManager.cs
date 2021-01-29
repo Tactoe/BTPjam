@@ -21,6 +21,7 @@ public class UIManager : MonoBehaviour
     public GameObject[] glist;
     public bool inMenu = false;
     public Dictionary<string, bool> activeMenus;
+    public bool murderMode;
 
     void Start()
     {
@@ -49,16 +50,13 @@ public class UIManager : MonoBehaviour
             rt.currentRambling = data.rambling;
             rtGO.SetActive(true);
         }
+
         TeleportBehindYou tp = toShowcase.GetComponent<TeleportBehindYou>();
         if (tp != null)
-        { 
-            if (tp.canTeleport)
-            {
-                data.description = "You blinked, didn't you.";
-            }
             tp.canTeleport = true;
-        }
-        ValueHandler.Instance.PreviewValue(data.values);
+
+        if (!murderMode)
+            ValueHandler.Instance.PreviewValue(data.values);
         showcase.SetNewShowcase(toShowcase, data);
     }
 
@@ -69,8 +67,12 @@ public class UIManager : MonoBehaviour
         examineItemCanvas.SetActive(false);
         rateButton.SetActive(true);
         rtGO.SetActive(false);
-        ValueHandler.Instance.TogglePreview(false);
-        TeleportBehindYou tp = FindObjectOfType<TeleportBehindYou>();
+        TeleportBehindYou tp = null;
+        if (!murderMode)
+        {
+            ValueHandler.Instance.TogglePreview(false);
+            tp = GameObject.Find("Anime Block").GetComponent<TeleportBehindYou>();
+        }
         if (tp != null)
             tp.Teleport();
         

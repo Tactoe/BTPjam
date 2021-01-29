@@ -145,7 +145,7 @@ public class ValueHandler : MonoBehaviour
         {
             surplus += Mathf.Abs(values[i] - idealValues[i]);
         }
-        surplus -= surplus > 20 ? 20 : 0; 
+        surplus -= surplus > 10 ? 10 : 0; 
         return Mathf.RoundToInt(surplus / (values.Length * 100 / 5));
     }
 }

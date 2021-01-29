@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speakerName: Cubotron
   text: Maro Kondi! My dear friend whose resemblance to any person living or dead
-    is purely coincidental!  By the stars, there you are! I was starting to think
+    is purely coincidental! By the stars, there you are! I was starting to think
     you'd never come!
   img: {fileID: 0}
   leftSpeaker: {fileID: 21300000, guid: 065324f73e79e31409ee961dbf4640cc, type: 3}

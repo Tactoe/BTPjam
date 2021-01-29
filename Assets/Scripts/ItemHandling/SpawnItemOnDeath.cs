@@ -19,6 +19,7 @@ public class SpawnItemOnDeath : MonoBehaviour
         for (int i = 0; i < spawnAmount; i++)
         {
             GameObject tmp = Instantiate(prefab);
+            tmp.name = prefab.name;
             tmp.transform.position = transform.position + new Vector3(Random.Range(minRadius, maxRadius), Random.Range(minRadius, maxRadius), Random.Range(minRadius, maxRadius));
         }
     }

@@ -63,7 +63,7 @@ MonoBehaviour:
   description: 'There''s a note attached to it. "<i>From one Tony to another: you
     definitely got this, brother. Tony H.</i>"'
   values:
-  - 0
+  - 8
   - 15
   rambling:
   - I'm thankful you've never shared my real name with anyone.

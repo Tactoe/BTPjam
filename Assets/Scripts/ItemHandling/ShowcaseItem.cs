@@ -34,8 +34,29 @@ public class ShowcaseItem : MonoBehaviour
             uiCam.orthographicSize = data.sizeModifier;
         else
             setSize(newShowcase.transform);
-        descriptionText.text = data.description;
+        if (data.description == "MORE")
+        {
+            StartCoroutine(MoreIsMore());
+        }
+        else
+            descriptionText.text = data.description;
         currentShowcase = setupObjectShowcase(newShowcase);
+    }
+
+    IEnumerator MoreIsMore()
+    {
+        string more = " IS MORE";
+        int i = 0;
+        descriptionText.text = "MORE";
+        while (true)
+        {
+            descriptionText.text += more[i];
+            i++;
+            if (i == more.Length)
+                i = 0;
+            print(i);
+            yield return new WaitForSeconds(0.1f);
+        }
     }
 
     GameObject setupObjectShowcase(GameObject obj)
@@ -43,6 +64,7 @@ public class ShowcaseItem : MonoBehaviour
         GameObject ret = Instantiate(obj, spawnLocation);
         SetAllChildUI(ret);
         ret.layer = 5;
+        ret.tag = "Untagged";
         ret.AddComponent<RotateItem>();
         ret.transform.position = spawnLocation.transform.position;
         Transform pivot = ret.transform.Find("Pivot");
