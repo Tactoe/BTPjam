@@ -34,7 +34,7 @@ public class ShowcaseItem : MonoBehaviour
             uiCam.orthographicSize = data.sizeModifier;
         else
             setSize(newShowcase.transform);
-        if (data.description == "MORE")
+        if (GameManager.Instance.murderMode)
         {
             StartCoroutine(MoreIsMore());
         }
@@ -47,6 +47,9 @@ public class ShowcaseItem : MonoBehaviour
     {
         string more = " IS MORE";
         int i = 0;
+        nameText.text = "N E V E R  E N D I N G";
+
+        descriptionText.color = Color.red;
         descriptionText.text = "MORE";
         while (true)
         {
@@ -54,8 +57,7 @@ public class ShowcaseItem : MonoBehaviour
             i++;
             if (i == more.Length)
                 i = 0;
-            print(i);
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.04f);
         }
     }
 

@@ -29,10 +29,15 @@ public class PointGiver : MonoBehaviour
         isNegative = _isNegative;
 
         targetGO = GameObject.Find("Jauge " + n);
-        target = targetGO.GetComponent<RectTransform>();
-        transform.localScale = Vector3.zero;
-        transform.SetParent(targetGO.transform.parent);
-        transform.DOScale(1, 0.2f).OnComplete(Move);
+        if (targetGO != null)
+        {
+            target = targetGO.GetComponent<RectTransform>();
+            transform.localScale = Vector3.zero;
+            transform.SetParent(targetGO.transform.parent.parent.parent);
+            transform.DOScale(1, 0.2f).OnComplete(Move);
+        }
+        else
+            Destroy(gameObject);
     }
 
     private void Update()

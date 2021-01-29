@@ -7,6 +7,10 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    public GameObject pauseMenu;
+
+    public bool murderMode;
+
     void Awake()
     {
 
@@ -25,21 +29,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void ExitGame()
     {
-        Application.Quit();
+        if (Application.platform == RuntimePlatform.WebGLPlayer)
+        {
+            SceneManager.LoadScene(4);
+        }
+        else
+        {
+            Application.Quit();
+        }
+    }
+
+    private void OnLevelWasLoaded(int level)
+    {
+        pauseMenu.SetActive(false);
     }
 
     public void ReloadScene()
@@ -56,6 +60,32 @@ public class GameManager : MonoBehaviour
     public void MainMenu()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void HandleEndScene(bool isRetrying)
+    {
+        print("ere");
+        print(murderMode);
+        if (murderMode)
+        {
+            NextScene();
+        }
+        else
+        {
+            if (isRetrying)
+                ReloadScene();
+            else
+                MainMenu();
+        }
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && pauseMenu != null)
+        {
+            pauseMenu.SetActive(!pauseMenu.activeInHierarchy);
+            Time.timeScale = pauseMenu.activeInHierarchy ? 0 : 1;
+        }
     }
 
 }

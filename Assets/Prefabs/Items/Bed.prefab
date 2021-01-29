@@ -62,8 +62,8 @@ MonoBehaviour:
   itemName: Bed
   description: We sleep on the bed
   values:
-  - 0
-  - 20
+  - 10
+  - 5
   rambling: []
   deathParticles: {fileID: 5042367466021304291, guid: adb80b6c52c98d941a4d24c2620f89ff, type: 3}
   sizeModifier: 2.4

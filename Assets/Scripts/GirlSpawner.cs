@@ -26,6 +26,7 @@ public class GirlSpawner : MonoBehaviour
         while (i++ < spawnLimit)
         {
             GameObject tmp = Instantiate(anime);
+            tmp.name = anime.name;
             Vector3 pos = transform.position;
             pos += new Vector3(Random.Range(-radius, radius), Random.Range(-radius, radius), Random.Range(-radius, radius));
             tmp.transform.position = pos;

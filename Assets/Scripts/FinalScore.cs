@@ -27,6 +27,10 @@ public class FinalScore : MonoBehaviour
         finalQuotes[4] = "You're a natural-born space cleaner! ";
     }
 
+    public void TriggerFinal(bool isRetrying)
+    {
+        GameManager.Instance.HandleEndScene(isRetrying);
+    }
 
     public void SetFinalScore(int score)
     {
@@ -48,7 +52,10 @@ public class FinalScore : MonoBehaviour
         if (killedHamster)
         {
             if (killedWife)
+            {
                 finalQuote += "And her hamster (although I won't miss him much)...";
+                GameManager.Instance.murderMode = true;
+            }
             else
                 finalQuote += "You killed my wife's hamster (although I won't miss him much)...";
         }
@@ -73,6 +80,13 @@ public class FinalScore : MonoBehaviour
                 finalQuote += "I'm so glad you were here to help me see what really mattered!!";
             else
                 finalQuote += "Please leave and never come back.";
+        }
+        else
+        {
+            if (score >= 4)
+                finalQuote += "I must admit I'm pretty impressed that you managed to do all this without removing any item that really mattered to me! Heavens knows what would have happened if you did!";
+            else
+                finalQuote += "Maybe try again and remove more stuff this time?";
         }
         scoreCommentTxt.text = finalQuote;
     }

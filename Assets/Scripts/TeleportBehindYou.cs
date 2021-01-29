@@ -36,7 +36,6 @@ public class TeleportBehindYou : MonoBehaviour
             data.description = "You blinked, didn't you.";
             Trigred(data);
             int index = Random.Range(0, positions.Count);
-            print(index);
             transform.position = positions[index].position;
         }
         else

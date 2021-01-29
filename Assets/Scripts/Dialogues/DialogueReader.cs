@@ -76,7 +76,6 @@ public class DialogueReader : MonoBehaviour
         HandleImg(node.leftSpeaker, leftCharacter);
         HandleImg(node.rightSpeaker, rightCharacter);
         dialogueIndex++;
-        print(dialogueIndex);
     }
 
     void HandleImg(Sprite img, Image target)

@@ -113,7 +113,7 @@ MonoBehaviour:
   itemName: Toy car
   description: The universal proof that things are way funnier when they're moving.
   values:
-  - -5
+  - -8
   - 10
   rambling:
   - 'My niece got me this from a flea market. '

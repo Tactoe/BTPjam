@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 67babcc6b4e661a4e8de50b0582bcdca, type: 2}
+  - {fileID: 2100000, guid: 1ab7ee887f59f754688e8d6286e3356a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -112,8 +112,8 @@ MonoBehaviour:
   itemName: Anxious Table
   description: Used to be an anxious block, but when life gives you lemons...
   values:
+  - 5
   - 0
-  - 10
   rambling:
   - 'My life has dramatically improved ever since I stopped carrying my anxiety around
     and started using it as a kitchen table. '

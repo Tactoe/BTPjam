@@ -32,6 +32,6 @@ public class SummonAndSkip : MonoBehaviour
 
     void NextScene()
     {
-        GameManager.Instance.MainMenu();
+        GameManager.Instance.NextScene();
     }
 }

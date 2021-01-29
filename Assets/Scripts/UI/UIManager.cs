@@ -7,8 +7,6 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     GameObject examineItemCanvas;
     [SerializeField]
-    GameObject pauseMenu;
-    [SerializeField]
     GameObject finalScoreUI;
     [SerializeField]
     ShowcaseItem showcase;
@@ -21,7 +19,7 @@ public class UIManager : MonoBehaviour
     public GameObject[] glist;
     public bool inMenu = false;
     public Dictionary<string, bool> activeMenus;
-    public bool murderMode;
+
 
     void Start()
     {
@@ -44,7 +42,7 @@ public class UIManager : MonoBehaviour
         examineItemCanvas.SetActive(true);
         rateButton.SetActive(false);
         lastObjectChecked = toShowcase;
-        if (data.rambling != null && data.rambling.Length > 0)
+        if (!GameManager.Instance.murderMode && data.rambling != null && data.rambling.Length > 0)
         {
             RamblingText rt =  examineItemCanvas.GetComponentInChildren<RamblingText>(true);
             rt.currentRambling = data.rambling;
@@ -55,7 +53,7 @@ public class UIManager : MonoBehaviour
         if (tp != null)
             tp.canTeleport = true;
 
-        if (!murderMode)
+        if (!GameManager.Instance.murderMode)
             ValueHandler.Instance.PreviewValue(data.values);
         showcase.SetNewShowcase(toShowcase, data);
     }
@@ -67,7 +65,7 @@ public class UIManager : MonoBehaviour
         examineItemCanvas.SetActive(false);
         rateButton.SetActive(true);
         rtGO.SetActive(false);
-        if (!murderMode)
+        if (!GameManager.Instance.murderMode)
         {
             TeleportBehindYou tp = null;
             GameObject tmp = GameObject.Find("Anime Block");
@@ -82,6 +80,11 @@ public class UIManager : MonoBehaviour
 
     public void DitchObject()
     {
+        if (GameManager.Instance.murderMode && lastObjectChecked.name != "MURDERBLOCK DELTA")
+        {
+            TurnOffItemCanvas();
+            return;
+        }
         //ValueHandler.Instance.UpdateValues(lastObjectChecked.GetComponent<ItemData>().values);
         if (lastObjectChecked != null)
         {
@@ -89,7 +92,6 @@ public class UIManager : MonoBehaviour
             Destroy(lastObjectChecked);
         }
         glist = GameObject.FindGameObjectsWithTag("Erasable");
-        print(GameObject.FindGameObjectsWithTag("Erasable").Length);
 
         if (GameObject.FindGameObjectsWithTag("Erasable").Length - 2 <= 0)
         {
@@ -110,12 +112,5 @@ public class UIManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            pauseMenu.SetActive(!pauseMenu.activeInHierarchy);
-            Time.timeScale = pauseMenu.activeInHierarchy ? 0 : 1;
-        }
-    }
+
 }
