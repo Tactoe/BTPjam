@@ -67,15 +67,17 @@ public class UIManager : MonoBehaviour
         examineItemCanvas.SetActive(false);
         rateButton.SetActive(true);
         rtGO.SetActive(false);
-        TeleportBehindYou tp = null;
         if (!murderMode)
         {
+            TeleportBehindYou tp = null;
+            GameObject tmp = GameObject.Find("Anime Block");
             ValueHandler.Instance.TogglePreview(false);
-            tp = GameObject.Find("Anime Block").GetComponent<TeleportBehindYou>();
+            if (tmp != null)
+            {
+                tp = tmp.GetComponent<TeleportBehindYou>();
+                tp.tryTeleport();
+            }
         }
-        if (tp != null)
-            tp.Teleport();
-        
     }
 
     public void DitchObject()

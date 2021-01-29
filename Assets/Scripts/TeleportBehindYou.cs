@@ -28,23 +28,33 @@ public class TeleportBehindYou : MonoBehaviour
         
     }
     
-    public void Teleport()
+    public void tryTeleport()
     {
         if (canTeleport)
         {
             ItemData data = gameObject.GetComponent<ItemData>();
             data.description = "You blinked, didn't you.";
-            if (GameObject.Find("Hamster") == null && GameObject.Find("Hamster Ball") == null)
-            {
-                gameObject.GetComponent<Renderer>().material = trigred;
-                data.itemName = "You murdered Colonel";
-                data.description = "you absolute monster.";
-                data.rambling = new string[0];
-            }
+            Trigred(data);
             int index = Random.Range(0, positions.Count);
             print(index);
             transform.position = positions[index].position;
         }
+        else
+        {
+            if (GameObject.Find("Hamster") == null && GameObject.Find("Hamster Ball") == null)
+                canTeleport = true;
+        }
 
+    }
+
+    public void Trigred(ItemData data)
+    {
+        if (GameObject.Find("Hamster") == null && GameObject.Find("Hamster Ball") == null)
+        {
+            gameObject.GetComponent<Renderer>().material = trigred;
+            data.itemName = "You murdered Colonel";
+            data.description = "you absolute monster.";
+            data.rambling = new string[0];
+        }
     }
 }

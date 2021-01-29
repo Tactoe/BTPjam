@@ -117,7 +117,7 @@ MonoBehaviour:
   - 0
   rambling: []
   deathParticles: {fileID: 5042367466021304291, guid: adb80b6c52c98d941a4d24c2620f89ff, type: 3}
-  sizeModifier: 0
+  sizeModifier: 0.35
 --- !u!54 &7485214588010364389
 Rigidbody:
   m_ObjectHideFlags: 0
