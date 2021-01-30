@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
 
     public void ExitGame()
     {
+        print("exited");
         if (Application.platform == RuntimePlatform.WebGLPlayer)
         {
             SceneManager.LoadScene(4);
